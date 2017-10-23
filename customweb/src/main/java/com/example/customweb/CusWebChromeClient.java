@@ -1,8 +1,11 @@
 package com.example.customweb;
 
 import android.app.Activity;
+import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.media.MediaPlayer;
+import android.os.Build;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -10,6 +13,8 @@ import android.webkit.ConsoleMessage;
 import android.webkit.JsResult;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
+import android.widget.FrameLayout;
+import android.widget.VideoView;
 
 /**
  * Created by Lbin on 2017/10/23.
@@ -85,6 +90,37 @@ public class CusWebChromeClient extends WebChromeClient{
     @Override
     public void onShowCustomView(View view, CustomViewCallback callback) {
         super.onShowCustomView(view, callback);
+        if (view == null) {
+            return;
+        }
+//        if (mCustomView != null && callback != null) {
+//            callback.onCustomViewHidden();
+//            return;
+//        }
+//        try {
+//            view.setKeepScreenOn(true);
+//        } catch (SecurityException e) {
+//            Logger.e("WebView is not allowed to keep the screen on");
+//        }
+//        Activity activity = AppManager.getAppManager().getCurrentActivity();
+//        activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+//        mOriginalOrientation = activity.getRequestedOrientation();
+//        FrameLayout decor = (FrameLayout) activity.getWindow().getDecorView();
+//        mFullscreenContainer = new FrameLayout(activity.getApplicationContext());
+//        mFullscreenContainer.setBackgroundColor(ContextCompat.getColor(activity.getApplicationContext(), android.R.color.black));
+//        mCustomView = view;
+//        mFullscreenContainer.addView(mCustomView, COVER_SCREEN_PARAMS);
+//        decor.addView(mFullscreenContainer, COVER_SCREEN_PARAMS);
+//        setFullscreen(true, true);
+////        mCurrentView.setVisibility(View.GONE);
+//        if (view instanceof FrameLayout) {
+//            if (((FrameLayout) view).getFocusedChild() instanceof VideoView) {
+//                mVideoView = (VideoView) ((FrameLayout) view).getFocusedChild();
+//                mVideoView.setOnErrorListener(new VideoCompletionListener());
+//                mVideoView.setOnCompletionListener(new VideoCompletionListener());
+//            }
+//        }
+//        mCustomViewCallback = callback;
     }
 
     /**
@@ -93,6 +129,38 @@ public class CusWebChromeClient extends WebChromeClient{
     @Override
     public void onHideCustomView() {
         super.onHideCustomView();
+//        if (mCustomView == null || mCustomViewCallback == null) {
+//            return;
+//        }
+//        Logger.d("onHideCustomView");
+////        mCurrentView.setVisibility(View.VISIBLE);
+//        try {
+//            mCustomView.setKeepScreenOn(false);
+//        } catch (SecurityException e) {
+//            Logger.e("WebView is not allowed to keep the screen on");
+//        }
+//        setFullscreen(false, false);
+//        Activity activity = AppManager.getAppManager().getCurrentActivity();
+//        FrameLayout decor = (FrameLayout) activity.getWindow().getDecorView();
+//        if (decor != null) {
+//            decor.removeView(mFullscreenContainer);
+//        }
+//
+//        if (API < Build.VERSION_CODES.KITKAT) {
+//            try {
+//                mCustomViewCallback.onCustomViewHidden();
+//            } catch (Throwable ignored) {
+//
+//            }
+//        }
+//        mFullscreenContainer = null;
+//        mCustomView = null;
+//        if (mVideoView != null) {
+//            mVideoView.setOnErrorListener(null);
+//            mVideoView.setOnCompletionListener(null);
+//            mVideoView = null;
+//        }
+//        activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
 
     /**
